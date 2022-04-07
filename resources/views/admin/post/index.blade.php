@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="coontainer">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
 
@@ -27,6 +27,21 @@
                             <td>{{$post->title}}</td>
                             <td>{{substr($post->content,0,30)}}</td>
                             <td>{{$post->slug}}</td>
+                            <td>
+                                <a href="{{route('admin.post.show') , $post->id}}" class="btn btn-primary">Vedi</a>
+                                <a href="{{route('admin.post.edit') , $post->id}}" class="btn btn-secondary">Modifica</a>
+
+                                <form action="POST" action="{{route('admin.post.destroy' , $post->id)}}">
+                                
+                                @csrf
+
+                                @method('DELETE')
+
+                                <button type="submit" class="btn btn-danger">Elimina</button>
+                                
+                                
+                                </form>
+                            </td>
                             
                         </tr>
                         
